@@ -1,17 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Website</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  </head>
-  <body>
-    <main>
-        <h1>Welcome to My Website</h1>  
-    </main>
-    <script src="index.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Saicon – Digital Product Designer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <img src="avatar.png" alt="Your Avatar" class="avatar">
+      <div>
+        <h1>I design digital products that <span class="highlight">delight</span> and <span class="highlight">deliver</span>.</h1>
+        <p class="subtitle">Blending creativity with strategy, I craft seamless experiences that empower users and drive business results.</p>
+        <button id="ai-demo-btn" class="ai-demo-btn">🤖 Ask my AI Assistant!</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <h2>About Me</h2>
+    <p>
+      Hi, I'm Saicon! With a background in Digital Product Design, I bring products to life through user-centered design, rapid prototyping, and thoughtful systems thinking. My passion is to solve real problems with elegant, accessible solutions.
+    </p>
+    <ul class="skills">
+      <li>UI/UX Design</li>
+      <li>Prototyping</li>
+      <li>Design Systems</li>
+      <li>Interaction Design</li>
+      <li>AI Integration</li>
+    </ul>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section class="portfolio" id="portfolio">
+    <h2>Portfolio Highlights</h2>
+    <div class="projects">
+      <div class="project-card">
+        <img src="project1.jpg" alt="Project 1">
+        <h3>Mobile Banking App</h3>
+        <p>Designed an intuitive, secure mobile banking experience for next-gen users. <button class="learn-more" data-detail="project1">Learn more</button></p>
+      </div>
+      <div class="project-card">
+        <img src="project2.jpg" alt="Project 2">
+        <h3>Healthcare Dashboard</h3>
+        <p>Created a clean, actionable dashboard for clinicians to track patient health. <button class="learn-more" data-detail="project2">Learn more</button></p>
+      </div>
+      <div class="project-card">
+        <img src="project3.jpg" alt="Project 3">
+        <h3>E-commerce Redesign</h3>
+        <p>Revamped an e-commerce site to boost conversion and delight shoppers. <button class="learn-more" data-detail="project3">Learn more</button></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Demo Section -->
+  <section class="ai-demo" id="ai-demo">
+    <h2>AI in Action</h2>
+    <div class="ai-chatbox" id="ai-chatbox">
+      <div class="ai-messages" id="ai-messages">
+        <div class="ai-msg ai-msg-bot">👋 Hi! I’m your AI design assistant. Ask me anything about product design or my work!</div>
+      </div>
+      <form id="ai-form">
+        <input type="text" id="ai-input" placeholder="Type your question..." autocomplete="off" required>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+    <div class="ai-insight" id="ai-insight">
+      <strong>AI Curated Insight:</strong>
+      <span id="insight-text">The best product designs combine accessibility with delight. Ask me how to make your products accessible!</span>
+      <button id="refresh-insight">🔄</button>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <h2>Contact</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/saicon/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/saicon" target="_blank">GitHub</a>
+      <!-- Add more as needed -->
+    </div>
+  </section>
+
+  <!-- Modal for Project Details -->
+  <div class="modal" id="project-modal">
+    <div class="modal-content">
+      <span class="close-modal" id="close-modal">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
