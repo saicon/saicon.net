@@ -1,207 +1,104 @@
-"use client"
-
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-
-export default function Portfolio() {
-  const [isVisible, setIsVisible] = useState(false)
-
-  useEffect(() => {
-    setIsVisible(true)
-  }, [])
-
-  const scrollToSection = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" })
-  }
-
-  return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section
-        className="min-h-screen flex items-center justify-center px-6 md:px-12 relative bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/mountain-travel.jpeg')" }}
-      >
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/40"></div>
-
-        <div className={`max-w-4xl mx-auto text-center relative z-10 ${isVisible ? "fade-in" : "opacity-0"}`}>
-          <div className="mb-8">
-            <img
-              src="/peter-avatar.jpeg"
-              alt="Peter Leung"
-              className="w-32 h-32 rounded-full mx-auto mb-6 object-cover shadow-lg border-4 border-white/20"
-            />
-          </div>
-          <h1 className="text-5xl md:text-7xl font-light tracking-tight text-white mb-6 drop-shadow-lg">Peter Leung</h1>
-          <h2 className="text-xl md:text-2xl text-white/90 mb-8 font-light drop-shadow-md">
-            Lead Digital Product Designer
-          </h2>
-          <p className="text-lg md:text-xl text-white/85 max-w-2xl mx-auto mb-12 leading-relaxed drop-shadow-md">
-            Crafting intuitive digital experiences that bridge the gap between human needs and technological
-            possibilities.
-          </p>
-          <Button
-            onClick={() => scrollToSection("portfolio")}
-            className="bg-white/90 text-black hover:bg-white hover:text-black transition-all duration-300 px-8 py-3 text-lg font-medium rounded-full shadow-lg backdrop-blur-sm"
-          >
-            View My Work
-          </Button>
-        </div>
-      </section>
-
-      {/* Portfolio Section */}
-      <section id="portfolio" className="py-24 px-6 md:px-12">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-light text-center mb-16 slide-up">Selected Work</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {[
-              {
-                title: "FinTech Mobile App",
-                role: "Lead Designer",
-                impact: "40% increase in user engagement",
-                image: "/modern-fintech-app.png",
-              },
-              {
-                title: "E-commerce Platform",
-                role: "UX/UI Designer",
-                impact: "25% boost in conversion rate",
-                image: "/clean-ecommerce-platform.png",
-              },
-              {
-                title: "Healthcare Dashboard",
-                role: "Product Designer",
-                impact: "Streamlined workflow for 10k+ users",
-                image: "/healthcare-dashboard.png",
-              },
-              {
-                title: "SaaS Analytics Tool",
-                role: "Senior Designer",
-                impact: "Reduced onboarding time by 60%",
-                image: "/analytics-dashboard.png",
-              },
-            ].map((project, index) => (
-              <Card
-                key={index}
-                className="group overflow-hidden border-0 shadow-sm hover:shadow-lg transition-all duration-500"
-              >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300" />
-                </div>
-                <div className="p-8">
-                  <h3 className="text-2xl font-medium mb-2">{project.title}</h3>
-                  <p className="text-muted-foreground mb-2">{project.role}</p>
-                  <p className="text-sm text-accent-foreground font-medium">{project.impact}</p>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-24 px-6 md:px-12 bg-muted/30">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-light text-center mb-16">About</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-            <div>
-              <p className="text-lg leading-relaxed text-muted-foreground mb-6">
-                With over 8 years of experience in digital product design, I specialize in creating user-centered
-                solutions that drive business growth and enhance user satisfaction.
-              </p>
-              <p className="text-lg leading-relaxed text-muted-foreground mb-6">
-                My approach combines strategic thinking with meticulous attention to detail, ensuring every design
-                decision is backed by user research and data insights.
-              </p>
-              <p className="text-lg leading-relaxed text-muted-foreground">
-                When I'm not designing, you'll find me exploring the world with my camera, capturing the beauty of
-                landscapes and cultures that inspire my creative work.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-medium mb-6">Core Skills</h3>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  "User Research",
-                  "Prototyping",
-                  "Design Systems",
-                  "Interaction Design",
-                  "Usability Testing",
-                  "Visual Design",
-                  "Information Architecture",
-                  "Design Strategy",
-                ].map((skill, index) => (
-                  <div key={index} className="text-muted-foreground">
-                    {skill}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-24 px-6 md:px-12">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-light text-center mb-16">Get In Touch</h2>
-          <form className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Input
-                placeholder="Your Name"
-                className="bg-background border-border focus:border-ring transition-colors"
-              />
-              <Input
-                type="email"
-                placeholder="Your Email"
-                className="bg-background border-border focus:border-ring transition-colors"
-              />
-            </div>
-            <Textarea
-              placeholder="Your Message"
-              rows={6}
-              className="bg-background border-border focus:border-ring transition-colors resize-none"
-            />
-            <div className="text-center">
-              <Button className="bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground transition-all duration-300 px-8 py-3 rounded-full">
-                Send Message
-              </Button>
-            </div>
-          </form>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-12 px-6 md:px-12 border-t border-border">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="flex justify-center space-x-8 mb-6">
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="https://behance.net"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Behance
-            </a>
-          </div>
-          <p className="text-muted-foreground text-sm">© 2024 Peter Leung. All rights reserved.</p>
-        </div>
-      </footer>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Saicon – Digital Product Designer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <img src="avatar.png" alt="Your Avatar" class="avatar">
+      <div>
+        <h1>I design digital products that <span class="highlight">delight</span> and <span class="highlight">deliver</span>.</h1>
+        <p class="subtitle">Blending creativity with strategy, I craft seamless experiences that empower users and drive business results.</p>
+        <button id="ai-demo-btn" class="ai-demo-btn">🤖 Ask my AI Assistant!</button>
+      </div>
     </div>
-  )
-}
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <h2>About Me</h2>
+    <p>
+      Hi, I'm Saicon! With a background in Digital Product Design, I bring products to life through user-centered design, rapid prototyping, and thoughtful systems thinking. My passion is to solve real problems with elegant, accessible solutions.
+    </p>
+    <ul class="skills">
+      <li>UI/UX Design</li>
+      <li>Prototyping</li>
+      <li>Design Systems</li>
+      <li>Interaction Design</li>
+      <li>AI Integration</li>
+    </ul>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section class="portfolio" id="portfolio">
+    <h2>Portfolio Highlights</h2>
+    <div class="projects">
+      <div class="project-card">
+        <img src="project1.jpg" alt="Project 1">
+        <h3>Mobile Banking App</h3>
+        <p>Designed an intuitive, secure mobile banking experience for next-gen users. <button class="learn-more" data-detail="project1">Learn more</button></p>
+      </div>
+      <div class="project-card">
+        <img src="project2.jpg" alt="Project 2">
+        <h3>Healthcare Dashboard</h3>
+        <p>Created a clean, actionable dashboard for clinicians to track patient health. <button class="learn-more" data-detail="project2">Learn more</button></p>
+      </div>
+      <div class="project-card">
+        <img src="project3.jpg" alt="Project 3">
+        <h3>E-commerce Redesign</h3>
+        <p>Revamped an e-commerce site to boost conversion and delight shoppers. <button class="learn-more" data-detail="project3">Learn more</button></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Demo Section -->
+  <section class="ai-demo" id="ai-demo">
+    <h2>AI in Action</h2>
+    <div class="ai-chatbox" id="ai-chatbox">
+      <div class="ai-messages" id="ai-messages">
+        <div class="ai-msg ai-msg-bot">👋 Hi! I’m your AI design assistant. Ask me anything about product design or my work!</div>
+      </div>
+      <form id="ai-form">
+        <input type="text" id="ai-input" placeholder="Type your question..." autocomplete="off" required>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+    <div class="ai-insight" id="ai-insight">
+      <strong>AI Curated Insight:</strong>
+      <span id="insight-text">The best product designs combine accessibility with delight. Ask me how to make your products accessible!</span>
+      <button id="refresh-insight">🔄</button>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <h2>Contact</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/saicon/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/saicon" target="_blank">GitHub</a>
+      <!-- Add more as needed -->
+    </div>
+  </section>
+
+  <!-- Modal for Project Details -->
+  <div class="modal" id="project-modal">
+    <div class="modal-content">
+      <span class="close-modal" id="close-modal">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
