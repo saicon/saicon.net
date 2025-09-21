@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fortune Telling Email App</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Replace the action with your n8n Webhook URL -->
+  <!-- Test URL example: https://your-n8n-domain/webhook-test/fortune-form -->
+  <!-- Prod URL example: https://your-n8n-domain/webhook/fortune-form -->
+  <form
+    class="card"
+    action="https://YOUR-N8N-DOMAIN/webhook/fortune-form"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+    <div class="banner">This is a test version of your form</div>
+
+    <h1 class="title">A fortune telling email app</h1>
+    <p class="subtitle">
+      This is an automation email that sends your receiver a message
+      about their fortune for the week.
+    </p>
+
+    <label class="field">
+      <span>Name</span>
+      <input type="text" name="name" placeholder="Your name" />
+    </label>
+
+    <label class="field">
+      <span>Email</span>
+      <input
+        type="email"
+        name="email"
+        placeholder="Your email address"
+        required
+      />
+    </label>
+
+    <label class="field">
+      <span>Theme <b class="req">*</b></span>
+      <select name="theme" required>
+        <option value="" disabled selected>Select an option ...</option>
+        <option value="career">Career</option>
+        <option value="love">Love</option>
+        <option value="finance">Finance</option>
+        <option value="wellbeing">Wellbeing</option>
+        <option value="general">General</option>
+      </select>
+    </label>
+
+    <label class="field">
+      <span>Reference photo <b class="req">*</b></span>
+      <!-- Name the file "image0" so n8n gets it in $binary.image0 -->
+      <input
+        type="file"
+        name="image0"
+        accept="image/png,image/jpeg"
+        required
+      />
+      <small class="hint">PNG or JPG, max ~10MB</small>
+    </label>
+
+    <!-- Optional: cadence & consent -->
+    <div class="row">
+      <label class="inline">
+        <input type="checkbox" name="optIn" value="true" />
+        <span>Send me a weekly reading</span>
+      </label>
+    </div>
+
+    <!-- Honeypot (basic spam trap). Leave hidden via CSS. -->
+    <label class="hp">
+      <span>Leave this empty</span>
+      <input type="text" name="website" autocomplete="off" />
+    </label>
+
+    <button type="submit" class="submit">Submit</button>
+  </form>
+</body>
+</html>
