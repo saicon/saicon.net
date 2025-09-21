@@ -1,104 +1,176 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Saicon – Digital Product Designer</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Site Under Construction</title>
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --card: #15171c;
+      --text: #e9eef4;
+      --muted: #a9b2bf;
+      --accent: #f7b500;
+      --accent-2: #ffdd57;
+      --maxw: 42rem;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f7f8fa;
+        --card: #ffffff;
+        --text: #0f1720;
+        --muted: #4a5565;
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      display: grid;
+      place-items: center;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+    }
+    .wrap {
+      width: min(94vw, var(--maxw));
+      padding: 2rem;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 16px;
+      padding: clamp(1.25rem, 2.5vw + 1rem, 2rem);
+      box-shadow: 0 8px 30px rgba(0,0,0,.2);
+      text-align: center;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .4rem .75rem;
+      border-radius: 999px;
+      font-weight: 600;
+      background:
+        repeating-linear-gradient(
+          -45deg,
+          var(--accent),
+          var(--accent) 10px,
+          var(--accent-2) 10px,
+          var(--accent-2) 20px
+        );
+      color: #1a1a1a;
+      border: 1px solid rgba(0,0,0,.15);
+    }
+    .icon {
+      width: 1.1em; height: 1.1em;
+      display: inline-block;
+      transform: translateY(1px);
+    }
+    h1 {
+      margin: .85rem 0 0.25rem;
+      font-size: clamp(1.6rem, 2vw + 1rem, 2.4rem);
+      letter-spacing: .2px;
+    }
+    p {
+      margin: 0.5rem auto 1rem;
+      color: var(--muted);
+      max-width: 40ch;
+    }
+    .progress {
+      height: 8px;
+      width: 100%;
+      background: linear-gradient( to right, rgba(255,255,255,.08), rgba(255,255,255,.04) );
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 1rem 0 1.25rem;
+      position: relative;
+      isolation: isolate;
+    }
+    .bar {
+      position: absolute;
+      inset: 0;
+      width: 35%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      border-radius: 999px;
+      animation: load 1.8s ease-in-out infinite;
+    }
+    @keyframes load {
+      0%   { transform: translateX(-40%); }
+      50%  { transform: translateX(75%);  }
+      100% { transform: translateX(-40%); }
+    }
+    .actions {
+      display: flex;
+      gap: .75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: .5rem;
+    }
+    .btn, .link {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      border-radius: 10px;
+      padding: .7rem 1rem;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .btn {
+      background: var(--text);
+      color: #111;
+      border: 1px solid rgba(0,0,0,.15);
+    }
+    .btn:active { transform: translateY(1px); }
+    .link {
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,.12);
+      background: transparent;
+    }
+    footer {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: .875rem;
+      color: var(--muted);
+    }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+  </style>
 </head>
 <body>
-  <!-- Hero Section -->
-  <section class="hero" id="hero">
-    <div class="hero-content">
-      <img src="/images/pixel_avatar.jpeg" alt="Your Avatar" class="avatar">
-      <div>
-        <h1>I design digital products that <span class="highlight">delight</span> and <span class="highlight">deliver</span>.</h1>
-        <p class="subtitle">Blending creativity with strategy, I craft seamless experiences that empower users and drive business results.</p>
-        <button id="ai-demo-btn" class="ai-demo-btn">🤖 Ask my AI Assistant!</button>
+  <main class="wrap" role="main" aria-labelledby="title">
+    <section class="card" aria-live="polite">
+      <span class="badge" aria-hidden="true">
+        <!-- inline SVG barrier icon -->
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M4 7h16a2 2 0 0 1 2 2v3H2V9a2 2 0 0 1 2-2zm18 7v3a2 2 0 0 1-2 2h-3v-5h5zM5 19a2 2 0 0 1-2-2v-3h5v5H5z"/>
+        </svg>
+        UNDER CONSTRUCTION
+      </span>
+
+      <h1 id="title">We’re building something new</h1>
+      <p>Thanks for stopping by. This page is being assembled. Check back soon.</p>
+
+      <div class="progress" aria-label="Loading progress">
+        <span class="sr-only">Work in progress</span>
+        <div class="bar"></div>
       </div>
-    </div>
-  </section>
 
-  <!-- About Section -->
-  <section class="about" id="about">
-    <h2>About Me</h2>
-    <p>
-      Hi, I'm Saicon! With a background in Digital Product Design, I bring products to life through user-centered design, rapid prototyping, and thoughtful systems thinking. My passion is to solve real problems with elegant, accessible solutions.
-    </p>
-    <ul class="skills">
-      <li>UI/UX Design</li>
-      <li>Prototyping</li>
-      <li>Design Systems</li>
-      <li>Interaction Design</li>
-      <li>AI Integration</li>
-    </ul>
-  </section>
-
-  <!-- Portfolio Section -->
-  <section class="portfolio" id="portfolio">
-    <h2>Portfolio Highlights</h2>
-    <div class="projects">
-      <div class="project-card">
-        <img src="project1.jpg" alt="Project 1">
-        <h3>Mobile Banking App</h3>
-        <p>Designed an intuitive, secure mobile banking experience for next-gen users. <button class="learn-more" data-detail="project1">Learn more</button></p>
+      <div class="actions">
+        <a class="btn" href="mailto:hello@example.com?subject=Website%20enquiry">Contact us</a>
+        <a class="link" href="/" rel="nofollow">Return home</a>
       </div>
-      <div class="project-card">
-        <img src="project2.jpg" alt="Project 2">
-        <h3>Healthcare Dashboard</h3>
-        <p>Created a clean, actionable dashboard for clinicians to track patient health. <button class="learn-more" data-detail="project2">Learn more</button></p>
-      </div>
-      <div class="project-card">
-        <img src="project3.jpg" alt="Project 3">
-        <h3>E-commerce Redesign</h3>
-        <p>Revamped an e-commerce site to boost conversion and delight shoppers. <button class="learn-more" data-detail="project3">Learn more</button></p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- AI Demo Section -->
-  <section class="ai-demo" id="ai-demo">
-    <h2>AI in Action</h2>
-    <div class="ai-chatbox" id="ai-chatbox">
-      <div class="ai-messages" id="ai-messages">
-        <div class="ai-msg ai-msg-bot">👋 Hi! I’m your AI design assistant. Ask me anything about product design or my work!</div>
-      </div>
-      <form id="ai-form">
-        <input type="text" id="ai-input" placeholder="Type your question..." autocomplete="off" required>
-        <button type="submit">Send</button>
-      </form>
-    </div>
-    <div class="ai-insight" id="ai-insight">
-      <strong>AI Curated Insight:</strong>
-      <span id="insight-text">The best product designs combine accessibility with delight. Ask me how to make your products accessible!</span>
-      <button id="refresh-insight">🔄</button>
-    </div>
-  </section>
+    <footer>
+      © <span id="year"></span> Your Company. All rights reserved.
+    </footer>
+  </main>
 
-  <!-- Contact Section -->
-  <section class="contact" id="contact">
-    <h2>Contact</h2>
-    <form class="contact-form">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message" required></textarea>
-      <button type="submit">Send</button>
-    </form>
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/saicon/" target="_blank">LinkedIn</a>
-      <a href="https://github.com/saicon" target="_blank">GitHub</a>
-      <!-- Add more as needed -->
-    </div>
-  </section>
-
-  <!-- Modal for Project Details -->
-  <div class="modal" id="project-modal">
-    <div class="modal-content">
-      <span class="close-modal" id="close-modal">&times;</span>
-      <div id="modal-body"></div>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
