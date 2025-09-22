@@ -10,7 +10,12 @@
   <!-- Replace the action with your n8n Webhook URL -->
   <!-- Test URL example: https://your-n8n-domain/webhook-test/fortune-form -->
   <!-- Prod URL example: https://your-n8n-domain/webhook/fortune-form -->
-  <form id="contactForm" method="POST" class="card">
+<form
+  class="card"
+  action="http://localhost:5678/webhook-test/tarot"
+  method="POST"
+  enctype="multipart/form-data"
+>
     <div class="banner">This is a test version of your form</div>
 
     <h1 class="title">A fortune telling email app</h1>
@@ -21,7 +26,7 @@
 
     <label class="field">
       <span>Name</span>
-      <input type="text" name="name" placeholder="Your name" required />
+      <input type="text" name="name" placeholder="Your name" />
     </label>
 
     <label class="field">
@@ -80,10 +85,12 @@
     document.getElementById('contactForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       const formData = new FormData(this);
+      const data = Object.fromEntries(formData.entries());
 
       const res = await fetch("http://localhost:8081/webhook/tarot", {
         method: "POST",
-        body: formData // Do NOT set Content-Type; browser sets it for FormData automatically
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
       });
 
       const text = await res.text();
