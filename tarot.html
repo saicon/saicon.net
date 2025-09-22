@@ -79,7 +79,7 @@
 
     <button type="submit" class="submit">Submit</button>
   </form>
-   <p id="response"></p>
+  <p id="response"></p>
 
   <script>
     document.getElementById('contactForm').addEventListener('submit', async function(e) {
@@ -87,7 +87,7 @@
       const formData = new FormData(this);
       const data = Object.fromEntries(formData.entries());
 
-      const res = await fetch("http://localhost:8081/webhook/myform", {
+      const res = await fetch("http://localhost:8081/webhook/tarot", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
