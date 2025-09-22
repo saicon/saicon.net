@@ -22,7 +22,7 @@ html,body{
   background:linear-gradient(180deg, #fafbff 0%, #f2f4ff 100%) fixed;
 }
 
-.card{
+.card, #contactForm{
   max-width: 540px;
   margin: 48px auto;
   background: var(--card);
