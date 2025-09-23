@@ -1,7 +1,7 @@
 /* ========== Base ========== */
 :root{
   --bg: #efe6d5;              /* parchment base */
-  --paper: #fffdf7;
+  /*--paper: #fffdf7;*/
   --ink: #1d232a;
   --muted:#6b6a66;
   --ring: #e2d7c4;
@@ -46,7 +46,7 @@ body {
 
 /* ========== Layout ========== */
 .layout {
-  display: grid;
+  display: flex;
   grid-template-columns: 1.2fr .9fr;
   gap: 36px;
   align-items: start;
@@ -67,19 +67,6 @@ body {
 }
 .tarot img { display:block; width: 100%; height: auto; aspect-ratio: 2/3; object-fit: cover; }
 .tarot--raised { transform: translateY(-10px); }
-
-.avatar {
-  position: absolute;
-  left: 50%;
-  bottom: -22px;
-  transform: translateX(-50%);
-  width: 48px; height: 48px;
-  border-radius: 999px;
-  background: #fff;
-  border: 2px solid #fff;
-  box-shadow: 0 10px 18px rgba(0,0,0,.15);
-}
-.avatar img { width: 100%; height: 100%; border-radius: inherit; object-fit: cover; }
 
 /* ========== Panel / Form ========== */
 .panel {
