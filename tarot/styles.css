@@ -46,7 +46,7 @@ body {
 
 /* ========== Layout ========== */
 .layout {
-  display: flex;
+  display: grid;
   gap: 36px;
   align-items: start;
 }
