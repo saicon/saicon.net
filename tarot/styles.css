@@ -183,3 +183,15 @@ figure {margin: 0;}
   .avatar { width: 42px; height: 42px; bottom: -20px; }
   .panel { padding: 16px; }
 }
+
+/* ========== Respond popup ========== */
+.popup {
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,.6); display:flex;
+  align-items:center; justify-content:center;
+}
+.popup-content {
+  background:#fff; padding:20px; border-radius:12px;
+  max-width:400px; text-align:center;
+}
+#closePopup { cursor:pointer; float:right; font-size:20px; }
