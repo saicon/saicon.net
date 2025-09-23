@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'alice'; /* Choose a name for your font */
+  src: url('fonts/alice.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* ========== Base ========== */
 :root{
   --bg: #efe6d5;              /* parchment base */
