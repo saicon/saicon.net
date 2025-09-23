@@ -76,7 +76,6 @@
               <div id="previewBox">
                 <img id="previewImg" src="" alt="Pet preview" style="display:none;" />
               </div>
-              <script src="assets/script.js"></script>
             </div>
           </label>
           <button class="button" type="submit">Get a reading</button>
@@ -89,5 +88,24 @@
       <p>Pet-Inspired Tarot © 2025 · For reflection and entertainment purposes only</p>
     </footer>
   </main>
+  <script>
+    const fileInput = document.getElementById('petUpload');
+    const previewImg = document.getElementById('previewImg');
+
+    fileInput.addEventListener('change', function () {
+      const file = this.files[0];
+      if (file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          previewImg.src = e.target.result;
+          previewImg.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      } else {
+        previewImg.src = "";
+        previewImg.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
