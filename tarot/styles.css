@@ -27,7 +27,7 @@ html { font-family: alice, ui-serif, Georgia, Cambria, "Times New Roman", serif;
 body {
   margin: 0;
   color: var(--ink);
-  background: url('asset/background.jpg') center;
+  background: url('assets/Background.jpg') center;
 }
 
 /* subtle paper noise */
