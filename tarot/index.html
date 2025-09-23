@@ -83,7 +83,13 @@
         </form>
       </aside>
     </section>
-
+    <!-- Popup Modal -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span id="popupClose">&times;</span>
+      <p id="popupMessage">Your message has been sent!</p>
+    </div>
+  </div>
     <footer class="site-footer">
       <img class="logo" src="assets/PetInspiredTarot.png" alt="" />
       <p>Pet-Inspired Tarot © 2025 · For reflection and entertainment purposes only</p>
@@ -108,13 +114,6 @@
       }
     });
   </script>
-    <!-- Popup Modal -->
-  <div id="popup" class="popup">
-    <div class="popup-content">
-      <span id="popupClose">&times;</span>
-      <p id="popupMessage">Your message has been sent!</p>
-    </div>
-  </div>
   <script>
     const form = document.getElementById("tarotForm"); // your form id
     const popup = document.getElementById("popup");
