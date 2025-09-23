@@ -47,10 +47,9 @@ body {
 /* ========== Layout ========== */
 .layout {
   display: grid;
-  gap: 36px;
+  gap: 32px;
   align-items: start;
-  grid-template-columns: 0fr;
-  gap: 24px;
+  grid-template-columns: 75% 25%;
 }
 @media (max-width: 980px){
   .layout { grid-template-columns: 1fr; gap: 24px; }
@@ -63,7 +62,7 @@ body {
   background: none;
   overflow: hidden;
 }
-.tarot img { display:block; object-fit: cover; }
+.tarot img { display:block; object-fit: cover; width: 100%;}
 figure {margin: 0;}
 
 /* ========== Panel / Form ========== */
