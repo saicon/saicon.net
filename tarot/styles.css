@@ -61,7 +61,8 @@ body {
   background: none;
   overflow: hidden;
 }
-.tarot img { display:block; object-fit: cover; margin: 0;}
+.tarot img { display:block; object-fit: cover; }
+figure {margin: 0;}
 
 /* ========== Panel / Form ========== */
 .panel {
