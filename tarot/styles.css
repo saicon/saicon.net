@@ -34,7 +34,7 @@ body {
 }
 
 /* subtle paper noise */
-.page { max-width: 1024px; margin: 0 auto; padding: 3vh 24px; }
+.page { max-width: 1024px; margin: 0 auto; padding: 3vh 24px; background: url("asset/background.jpg") cover;}
 
 /* ========== Hero ========== */
 .hero { text-align: center; margin: 8px auto 0px; width: 75%;}
