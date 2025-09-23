@@ -28,7 +28,6 @@ body {
   background-image: url('assets/Background.jpg');
   background-size: cover;
   background-repeat: no-repeat; /* Prevent tiling */
-  background-position: center center; /* Center the image */
   width: 100vw;
   height: 100vh; /* Or a specific pixel height */
 }
