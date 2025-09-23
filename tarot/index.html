@@ -7,51 +7,27 @@
   <meta name="description" content="Upload your pet, choose a theme, and receive a light-hearted 3-card tarot reading with your pet as your spirit guide." />
   <link rel="stylesheet" href="styles.css" />
   <script>
-    const popup = document.getElementById("popup");
-    const popupMessage = document.getElementById("popupMessage");
-    const closeBtn = document.getElementById("closePopup");
+    const fileInput = document.getElementById('petUpload');
+    const previewImg = document.getElementById('previewImg');
   
-    form.addEventListener("submit", async function (e) {
-      e.preventDefault();
-      const formData = new FormData(form);
-  
-      const res = await fetch(form.action, { method:"POST", body:formData });
-      const text = await res.text();
-  
-      popupMessage.textContent = text;
-      popup.style.display = "flex";
+    fileInput.addEventListener('change', function () {
+      const file = this.files[0];
+      if (file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          previewImg.src = e.target.result;
+          previewImg.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      } else {
+        previewImg.src = "";
+        previewImg.style.display = 'none';
+      }
     });
-  
-    closeBtn.onclick = () => popup.style.display = "none";
   </script>
-  <script>
-  const fileInput = document.getElementById('petUpload');
-  const previewImg = document.getElementById('previewImg');
-
-  fileInput.addEventListener('change', function () {
-    const file = this.files[0];
-    if (file && file.type.startsWith('image/')) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        previewImg.src = e.target.result;
-        previewImg.style.display = 'block';
-      };
-      reader.readAsDataURL(file);
-    } else {
-      previewImg.src = "";
-      previewImg.style.display = 'none';
-    }
-  });
-</script>
 </head>
 <body>
   <main class="page">  
-    <div id="popup" class="popup">
-      <div class="popup-content">
-        <span id="closePopup">&times;</span>
-        <p id="popupMessage"></p>
-      </div>
-    </div>
     <section class="layout">
       <!-- Preview cards -->
       <div class="cards">
