@@ -78,6 +78,7 @@ figure {margin: 0;}
 
 /* ========== Panel / Form ========== */
 .panel {
+  background-image: url('assets/Cardrear.png');
   background: var(--panel);
   border: var(--border);
   border-radius: 22px;
