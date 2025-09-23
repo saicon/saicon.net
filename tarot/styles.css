@@ -27,14 +27,11 @@ html { font-family: alice, ui-serif, Georgia, Cambria, "Times New Roman", serif;
 body {
   margin: 0;
   color: var(--ink);
-  background:
-    radial-gradient(600px 200px at 50% -80px, rgba(255,255,255,.75), transparent 70%),
-    repeating-linear-gradient( to bottom, rgba(0,0,0,.02), rgba(0,0,0,.02) 2px, transparent 2px, transparent 6px ),
-    var(--bg);
+  background: url('asset/background.jpg') center center/cover no-repeat;
 }
 
 /* subtle paper noise */
-.page { max-width: 1024px; margin: 0 auto; padding: 3vh 24px; background: url("asset/background.jpg") cover;}
+.page { max-width: 1024px; margin: 0 auto; padding: 3vh 24px; }
 
 /* ========== Hero ========== */
 .hero { text-align: center; margin: 8px auto 0px; width: 75%;}
