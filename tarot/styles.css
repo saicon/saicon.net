@@ -161,20 +161,34 @@ figure {margin: 0;}
 
 /* button */
 .button {
-  display:block;
-  width: 100%;
-  margin: 14px 6px 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 14px 16px;
-  font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
-  font-size: 14px;
-  font-weight: 200;
+  font-size: 16px;
+  font-weight: 600;
   color: #fff;
-  background: var(--btn);
+  background: #455b4a;
   border: none;
   border-radius: 14px;
   cursor: pointer;
-  box-shadow: 0 10px 18px rgba(63,91,77,.25);
   transition: background .15s, transform .03s ease-in;
+}
+.button:disabled {
+  background: #999;
+  cursor: not-allowed;
+}
+.spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #fff;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
 }
 .button:hover { background: var(--btn-hover); }
 .button:active { transform: translateY(1px); }
