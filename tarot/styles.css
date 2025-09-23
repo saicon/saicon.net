@@ -208,8 +208,9 @@ figure {margin: 0;}
 
 /* ========== Preview box ========== */
 #previewBox {
-  width: 48px;
-  height: 48px;
+  margin-top: 10px;
+  width: 120px;
+  height: 120px;
   border: 1px solid #ddd;
   border-radius: 8px;
   display: flex;
@@ -222,4 +223,5 @@ figure {margin: 0;}
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: none;
 }
