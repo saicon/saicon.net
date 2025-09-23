@@ -132,6 +132,17 @@ figure {margin: 0;}
   border-color: #c5b79b;
   box-shadow: 0 0 0 4px rgba(197,183,155,.25);
 }
+input:required:invalid,
+select:required:invalid {
+  border: 2px solid #e63946;   /* red */
+  background: #fff5f5;         /* light red tint */
+}
+
+input:focus:invalid,
+select:focus:invalid {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(230,57,70,.25);
+}
 
 /* custom select */
 .select-wrap { position: relative; }
