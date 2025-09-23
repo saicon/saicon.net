@@ -31,6 +31,7 @@ body {
 
 /* ========== Hero ========== */
 .hero { text-align: center; margin: 8px auto 0px; width: 75%;}
+.logo_layout { display: flex; }
 .logo { width: auto; height: 60px; display:block; margin: 4px auto 8px; }
 .hero__title {
   font-size: clamp(26px, 4vw, 24px);
