@@ -118,7 +118,7 @@ figure {margin: 0;}
 }
 .field-error {
   color: #e74c3c;
-  font-size: 0.9em;
+  font-size: 12px;
   margin-top: 4px;
 }
 .input-error {
