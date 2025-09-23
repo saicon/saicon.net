@@ -60,13 +60,9 @@ body {
 .tarot {
   position: relative;
   background: none;
-  /*! border-radius: 16px; */
-  /*! box-shadow: 0 10px 24px rgba(0,0,0,.1); */
-  /*! border: var(--border); */
   overflow: hidden;
 }
 .tarot img { display:block; width: 100%; height: auto; object-fit: cover; }
-.tarot--raised { transform: translateY(-10px); }
 
 /* ========== Panel / Form ========== */
 .panel {
