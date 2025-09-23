@@ -115,36 +115,27 @@
     });
   </script>
   <script>
-    const form = document.getElementById("tarotForm"); // your form id
+    const form = document.getElementById("tarotForm");
     const popup = document.getElementById("popup");
     const popupMsg = document.getElementById("popupMessage");
     const popupClose = document.getElementById("popupClose");
-  
+    
     form.addEventListener("submit", async (e) => {
-      e.preventDefault(); // stop default page reload
+      e.preventDefault();
       const formData = new FormData(form);
-  
       try {
-        const res = await fetch(form.action, {
-          method: "POST",
-          body: formData
-        });
-  
-        const text = await res.text(); // webhook response (could also use res.json())
+        const res = await fetch(form.action, { method: "POST", body: formData });
+        const text = await res.text();
         popupMsg.textContent = text || "Your reading request has been sent!";
-        popup.style.display = "flex"; // show popup
-      } catch (err) {
+        popup.classList.add("open");             // show
+      } catch {
         popupMsg.textContent = "Something went wrong. Please try again.";
-        popup.style.display = "flex";
+        popup.classList.add("open");
       }
     });
-  
-    // close popup on click
-    popupClose.onclick = () => (popup.style.display = "none");
-    // close popup if user clicks outside box
-    popup.onclick = (e) => {
-      if (e.target === popup) popup.style.display = "none";
-    };
+    
+    popupClose.onclick = () => popup.classList.remove("open"); // hide
+    popup.onclick = (e) => { if (e.target === popup) popup.classList.remove("open"); };
   </script>
 
 </body>
