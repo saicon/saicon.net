@@ -144,8 +144,8 @@ figure {margin: 0;}
 
 /* custom file button */
 .file {
-display: grid;
-  grid-template-columns: 1.5fr 8fr 1fr;
+  display: grid;
+  grid-template-columns: 24px 8fr 1fr;
   padding: 12px 14px;
   background: #fff;
   border: 1px dashed #d8ceb8;
