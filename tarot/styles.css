@@ -52,6 +52,7 @@ body {
   max-width: 680px;
   color: var(--muted);
   font-size: clamp(16px, 1.7vw, 16px);
+  line-height: 1.4;
 }
 
 /* ========== Layout ========== */
@@ -119,7 +120,7 @@ figure {margin: 0;}
 .input {
   width: 100%;
   padding: 10px 12px;
-  font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+  font-family: alice, ui-serif, Georgia, Cambria, "Times New Roman", serif;
   font-size: 14px;
   color: #222;
   background: #fff;
