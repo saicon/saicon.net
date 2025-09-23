@@ -144,15 +144,16 @@ figure {margin: 0;}
 
 /* custom file button */
 .file {
-  display: grid;
-  grid-template-columns: 1fr 8fr 1fr;
+display: grid;
+  grid-template-columns: 1.5fr 8fr 1fr;
   padding: 12px 14px;
-  background:#fff;
+  background: #fff;
   border: 1px dashed #d8ceb8;
   border-radius: 12px;
-  color:#4a4a46;
+  color: #4a4a46;
   cursor: pointer;
   font-size: 14px;
+  align-items: center;
 }
 .file__input {
   inline-size: 1px; block-size: 1px; opacity: 0; position: absolute; pointer-events:none;
