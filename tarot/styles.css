@@ -28,6 +28,8 @@ body {
   margin: 0;
   color: var(--ink);
   background: url('assets/Background.jpg') center;
+  width: 100vw;
+  height: 100vh;
 }
 
 /* subtle paper noise */
