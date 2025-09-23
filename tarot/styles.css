@@ -117,9 +117,12 @@ figure {margin: 0;}
   color: #3f3e3a;
 }
 .field-error {
+  display: block;
+  width: 100%;
   color: #e74c3c;
   font-size: 12px;
   margin-top: 4px;
+  white-space: normal;
 }
 .input-error {
   border-color: #e74c3c !important;
