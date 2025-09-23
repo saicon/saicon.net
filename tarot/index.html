@@ -95,6 +95,7 @@
       <p>Pet-Inspired Tarot © 2025 · For reflection and entertainment purposes only</p>
     </footer>
   </main>
+  <!-- Preview image -->
   <script>
     const fileInput = document.getElementById('petUpload');
     const previewImg = document.getElementById('previewImg');
@@ -114,6 +115,76 @@
       }
     });
   </script>
+  <!-- error machanic -->
+  <script>
+    const form = document.getElementById("tarotForm");
+    const requiredFields = [
+      { name: "name", type: "text", message: "Please enter your name." },
+      { name: "email", type: "email", message: "Please enter a valid email address." },
+      { name: "theme", type: "select", message: "Please select a theme." },
+      { name: "image0", type: "file", message: "Please upload an image of your pet." }
+    ];
+  
+    // Helper to show error below fields
+    function showError(input, message) {
+      let error = input.parentNode.querySelector(".field-error");
+      if (!error) {
+        error = document.createElement("div");
+        error.className = "field-error";
+        input.parentNode.appendChild(error);
+      }
+      error.textContent = message;
+      input.classList.add("input-error");
+    }
+  
+    // Helper to clear error
+    function clearError(input) {
+      let error = input.parentNode.querySelector(".field-error");
+      if (error) error.textContent = "";
+      input.classList.remove("input-error");
+    }
+  
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault();
+      let allValid = true;
+      requiredFields.forEach(field => {
+        const input = form.elements[field.name];
+        clearError(input);
+        if (field.type === "file") {
+          if (!input.files || !input.files[0]) {
+            showError(input, field.message);
+            allValid = false;
+          }
+        } else if (field.type === "email") {
+          if (!input.value || !/\S+@\S+\.\S+/.test(input.value)) {
+            showError(input, field.message);
+            allValid = false;
+          }
+        } else {
+          if (!input.value) {
+            showError(input, field.message);
+            allValid = false;
+          }
+        }
+      });
+  
+      if (!allValid) {
+        // Optionally show a popup/modal here
+        return;
+      }
+  
+      // All fields are valid, proceed to send to webhook
+      const formData = new FormData(form);
+      try {
+        const res = await fetch(form.action, { method: "POST", body: formData });
+        const text = await res.text();
+        // Show success message (e.g., popup)
+      } catch {
+        // Show error message (e.g., popup)
+      }
+    });
+  </script>
+  <!-- popup script -->
   <script>
     const form = document.getElementById("tarotForm");
     const popup = document.getElementById("popup");
