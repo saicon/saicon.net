@@ -33,7 +33,7 @@ body {
 .hero { text-align: center; margin: 8px auto 20px; }
 .logo { width: auto; height: 60px; display:block; margin: 4px auto 8px; }
 .hero__title {
-  font-size: clamp(28px, 4vw, 40px);
+  font-size: clamp(28px, 4vw, 32px);
   line-height: 1.15;
   margin: 4px 0 8px;
 }
@@ -47,7 +47,6 @@ body {
 /* ========== Layout ========== */
 .layout {
   display: flex;
-  grid-template-columns: 1.2fr .9fr;
   gap: 36px;
   align-items: start;
 }
@@ -62,7 +61,7 @@ body {
   background: none;
   overflow: hidden;
 }
-.tarot img { display:block; width: 100%; height: auto; object-fit: cover; }
+.tarot img { display:block; object-fit: cover; }
 
 /* ========== Panel / Form ========== */
 .panel {
