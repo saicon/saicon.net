@@ -206,9 +206,8 @@ figure {margin: 0;}
 
 /* ========== Preview box ========== */
 #previewBox {
-  margin-top: 10px;
-  width: 100px;
-  height: 100px;
+  width: 48px;
+  height: 48px;
   border: 1px solid #ddd;
   border-radius: 8px;
   display: flex;
