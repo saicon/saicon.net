@@ -56,7 +56,7 @@ body {
 }
 
 /* ========== Cards preview ========== */
-.cards { display: flex;}
+.cards { display: block;}
 .tarot {
   position: relative;
   background: none;
