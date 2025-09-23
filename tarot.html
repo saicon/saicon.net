@@ -3,81 +3,102 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fortune Telling Email App</title>
+  <title>Pet-Inspired Tarot — Your Spirit Guide</title>
+  <meta name="description" content="Upload your pet, choose a theme, and receive a light-hearted 3-card tarot reading with your pet as your spirit guide." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Replace the action with your n8n Webhook URL -->
-  <!-- Test URL example: https://your-n8n-domain/webhook-test/fortune-form -->
-  <!-- Prod URL example: https://your-n8n-domain/webhook/fortune-form -->
-  <form
-    class="card"
-    action="https://n8n.saicon.net/webhook/tarot"
-    method="POST"
-    enctype="multipart/form-data"
-  >
-    <div class="banner">This is a test version of your form</div>
+  <main class="page">
+    <!-- Hero -->
+    <header class="hero">
+      <img class="logo" src="assets/logo-cat.svg" alt="" />
+      <h1 class="hero__title">Your Pet, Your Spirit Guide</h1>
+      <p class="hero__lead">
+        Your beloved pet becomes a spirit guide within the tarot, inspiring three Major Arcana cards to reveal past, present, and future.
+        Through their essence, the cards offer gentle insight and guidance for your journey ahead.
+      </p>
+    </header>
 
-    <h1 class="title">A fortune telling email app (TBC)</h1>
-    <p class="subtitle">
-      This is an automation email that sends your receiver a message
-      about their fortune for the week.
-    </p>
+    <section class="layout">
+      <!-- Preview cards -->
+      <div class="cards">
+        <!-- Replace the three image src values with your generated card artwork -->
+        <figure class="tarot">
+          <img src="assets/card-emperor.jpg" alt="The Emperor — pet-inspired tarot card" />
+          <figcaption class="avatar">
+            <!-- small pet avatar -->
+            <img src="assets/pet-dog.jpg" alt="Dog avatar" />
+          </figcaption>
+        </figure>
 
-    <label class="field">
-      <span>Name</span>
-      <input type="text" name="name" placeholder="Your name" />
-    </label>
+        <figure class="tarot tarot--raised">
+          <img src="assets/card-fool.jpg" alt="The Fool — pet-inspired tarot card" />
+          <figcaption class="avatar">
+            <img src="assets/pet-cat.jpg" alt="Cat avatar" />
+          </figcaption>
+        </figure>
 
-    <label class="field">
-      <span>Email</span>
-      <input
-        type="email"
-        name="email"
-        placeholder="Your email address"
-        required
-      />
-    </label>
+        <figure class="tarot">
+          <img src="assets/card-hermit.jpg" alt="The Hermit — pet-inspired tarot card" />
+          <figcaption class="avatar">
+            <img src="assets/pet-bird.jpg" alt="Bird avatar" />
+          </figcaption>
+        </figure>
+      </div>
 
-    <label class="field">
-      <span>Theme <b class="req">*</b></span>
-      <select name="theme" required>
-        <option value="" disabled selected>Select an option ...</option>
-        <option value="career">Career</option>
-        <option value="love">Love</option>
-        <option value="finance">Finance</option>
-        <option value="wellbeing">Wellbeing</option>
-        <option value="general">General</option>
-      </select>
-    </label>
+      <!-- Form panel -->
+      <aside class="panel">
+        <form
+          class="form"
+          action="https://YOUR-N8N-DOMAIN/webhook/fortune-form"  <!-- swap to /webhook-test/... while testing -->
+          method="POST"
+          enctype="multipart/form-data"
+          novalidate
+        >
+          <h2 class="form__title">Get a Tarot insight</h2>
 
-    <label class="field">
-      <span>Reference photo <b class="req">*</b></span>
-      <!-- Name the file "image0" so n8n gets it in $binary.image0 -->
-      <input
-        type="file"
-        name="image0"
-        accept="image/png,image/jpeg"
-        required
-      />
-      <small class="hint">PNG or JPG, max ~10MB</small>
-    </label>
+          <label class="field">
+            <span class="label">Name</span>
+            <input class="input" type="text" name="name" placeholder="Your name" autocomplete="name" />
+          </label>
 
-    <!-- Optional: cadence & consent -->
-    <div class="row">
-      <label class="inline">
-        <input type="checkbox" name="optIn" value="true" />
-        <span>Send me a weekly reading</span>
-      </label>
-    </div>
+          <label class="field">
+            <span class="label">Email</span>
+            <input class="input" type="email" name="email" placeholder="Your email" autocomplete="email" required />
+          </label>
 
-    <!-- Honeypot (basic spam trap). Leave hidden via CSS. -->
-    <label class="hp">
-      <span>Leave this empty</span>
-      <input type="text" name="website" autocomplete="off" />
-    </label>
+          <label class="field">
+            <span class="label">Theme</span>
+            <div class="select-wrap">
+              <select class="input select" name="theme" required>
+                <option value="general" selected>General</option>
+                <option value="career">Career</option>
+                <option value="love">Love</option>
+                <option value="finance">Finance</option>
+                <option value="wellbeing">Wellbeing</option>
+              </select>
+              <svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            </div>
+          </label>
 
-    <button type="submit" class="submit">Submit</button>
-  </form>
+          <label class="field">
+            <span class="label">Image of your pet</span>
+            <!-- Keep name=image0 so n8n receives it at $binary.image0 -->
+            <div class="file">
+              <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5-5 5 5M12 5v14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Choose an image</span>
+              <input class="file__input" type="file" name="image0" accept="image/png,image/jpeg" required />
+            </div>
+          </label>
+
+          <button class="button" type="submit">Get a reading</button>
+        </form>
+      </aside>
+    </section>
+
+    <footer class="site-footer">
+      <p>Pet-Inspired Tarot © 2025 · For reflection and entertainment purposes only</p>
+    </footer>
+  </main>
 </body>
 </html>
