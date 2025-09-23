@@ -27,7 +27,7 @@ body {
 }
 
 /* subtle paper noise */
-.page { max-width: 1024px; margin: 0 auto; padding: 48px 20px; }
+.page { max-width: 1024px; margin: 0 auto; padding: 3vh 24px; }
 
 /* ========== Hero ========== */
 .hero { text-align: center; margin: 8px auto 0px; width: 75%;}
