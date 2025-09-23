@@ -118,6 +118,33 @@
   <!-- error machanic -->
   <script>
     const form = document.getElementById("tarotForm");
+    
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      let allValid = true;
+      const requiredInputs = form.querySelectorAll("[required]");
+    
+      requiredInputs.forEach(input => {
+        input.classList.remove("input-error"); // Remove error first
+        if (
+          (input.type === "file" && !input.files.length) ||
+          (input.type !== "file" && !input.value.trim())
+        ) {
+          input.classList.add("input-error"); // Add error if empty
+          allValid = false;
+        }
+      });
+    
+      if (!allValid) {
+        // Optionally show a message here
+        return;
+      }
+    
+      // All fields valid, proceed with fetch/webhook etc.
+    });
+  </script>
+  <script>
+    const form = document.getElementById("tarotForm");
     const requiredFields = [
       { name: "name", type: "text", message: "Please enter your name." },
       { name: "email", type: "email", message: "Please enter a valid email address." },
