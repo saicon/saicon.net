@@ -78,8 +78,7 @@ figure {margin: 0;}
 
 /* ========== Panel / Form ========== */
 .panel {
-  background: url(assets/Cardrear.png) var(--panel) center center;
-  background-size: cover;
+  background-color: var(--panel);
   border: var(--border);
   border-radius: 22px;
   padding: 24px;
