@@ -203,3 +203,22 @@ figure {margin: 0;}
   max-width:400px; text-align:center;
 }
 #closePopup { cursor:pointer; float:right; font-size:20px; }
+
+/* ========== Preview box ========== */
+#previewBox {
+  margin-top: 10px;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #fafafa;
+}
+#previewImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
