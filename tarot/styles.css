@@ -39,7 +39,7 @@ body {
 /* ========== Hero ========== */
 .hero { text-align: center; margin: 8px auto 0px; width: 75%;}
 .logo_layout { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px;}
-.logo_layout hr{ height:1px; margin: auto 0; color: #ddd;}
+.logo_layout hr{ height:1px; margin: auto 0; color: #000;}
 .logo { width: auto; height: 60px; display:block; margin: 4px auto 8px; }
 .hero__title {
   font-size: clamp(26px, 4vw, 24px);
