@@ -96,116 +96,116 @@
     </footer>
   </main>
 <!-- ...rest of your HTML above... -->
-  <script>
-    // Image preview logic
-    const fileInput = document.getElementById('petUpload');
-    const previewImg = document.getElementById('previewImg');
-    fileInput.addEventListener('change', function () {
-      const file = this.files[0];
-      if (file && file.type.startsWith('image/')) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          previewImg.src = e.target.result;
-          previewImg.style.display = 'block';
-        };
-        reader.readAsDataURL(file);
-      } else {
-        previewImg.src = "";
-        previewImg.style.display = 'none';
-      }
-    });
-  
-    // Form validation and submit
-    const form = document.getElementById("tarotForm");
-    const submitBtn = document.getElementById("submitBtn");
-    const popup = document.getElementById("popup");
-    const popupMsg = document.getElementById("popupMessage");
-    const popupClose = document.getElementById("popupClose");
-  
-    form.addEventListener("submit", async function(e) {
-      e.preventDefault();
-      let allValid = true;
-  
-      // Only validate required fields
-      const emailInput  = form.elements["email"];
-      const themeInput  = form.elements["theme"];
-      const imageInput  = form.elements["image0"];
-  
-      // Remove all previous errors
-      document.querySelectorAll(".field-error").forEach(el => el.remove());
-      [emailInput, themeInput, imageInput].forEach(input => input.classList.remove("input-error"));
-  
-      // Validate Email
-      if (!emailInput.value.trim() || !/\S+@\S+\.\S+/.test(emailInput.value)) {
-        showError(emailInput, "Please enter a valid email address.");
-        allValid = false;
-      }
-  
-      // Validate Theme
-      if (!themeInput.value.trim()) {
-        showError(themeInput, "Please select a theme.");
-        allValid = false;
-      }
-  
-      // Validate Image
-      if (!imageInput.files || !imageInput.files[0]) {
-        showUploadError(imageInput, "Please upload an image of your pet.");
-        allValid = false;
-      }
-  
-      if (!allValid) {
-        popupMsg.textContent = "Please fill in all required fields.";
-        popup.classList.add("open");
-        return;
-      }
-  
-      // All fields valid, disable button and show spinner
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<div class="spinner"></div>';
-  
-      // Submit to webhook
-      const formData = new FormData(form);
-      try {
-        const res = await fetch(form.action, { method: "POST", body: formData });
-        const text = await res.text();
-        popupMsg.textContent = text || "Your reading request has been sent!";
-        popup.classList.add("open");
-      } catch {
-        popupMsg.textContent = "Something went wrong. Please try again.";
-        popup.classList.add("open");
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Get a reading";
-      }
-    });
-  
-    // Helper for errors below the input
-    function showError(input, message) {
-      let error = document.createElement("div");
-      error.className = "field-error";
-      error.textContent = message;
-      input.classList.add("input-error");
-      input.parentNode.appendChild(error);
+<script>
+  // Image preview logic (unchanged)
+  const fileInput = document.getElementById('petUpload');
+  const previewImg = document.getElementById('previewImg');
+  fileInput.addEventListener('change', function () {
+    const file = this.files[0];
+    if (file && file.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        previewImg.src = e.target.result;
+        previewImg.style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+    } else {
+      previewImg.src = "";
+      previewImg.style.display = 'none';
     }
-  
-    // Helper for upload error: after the .file box, inside parent field container
-    function showUploadError(input, message) {
-      let error = document.createElement("div");
-      error.className = "field-error";
-      error.textContent = message;
-      input.classList.add("input-error");
-      // Find the label.field wrapping the image input
-      let fieldLabel = input.closest("label.field");
-      let fileBox = input.closest(".file");
-      if (fieldLabel && fileBox) {
-        // Insert error after the file box, but still inside the label.field
-        fieldLabel.insertBefore(error, fileBox.nextSibling);
-      }
+  });
+
+  // Form validation and submit
+  const form = document.getElementById("tarotForm");
+  const submitBtn = document.getElementById("submitBtn");
+  const popup = document.getElementById("popup");
+  const popupMsg = document.getElementById("popupMessage");
+  const popupClose = document.getElementById("popupClose");
+
+  form.addEventListener("submit", async function(e) {
+    e.preventDefault();
+    let allValid = true;
+
+    // Only validate required fields
+    const emailInput  = form.elements["email"];
+    const themeInput  = form.elements["theme"];
+    const imageInput  = form.elements["image0"];
+
+    // Remove all previous errors
+    document.querySelectorAll(".field-error").forEach(el => el.remove());
+    [emailInput, themeInput, imageInput].forEach(input => input.classList.remove("input-error"));
+
+    // Validate Email ONLY on submit
+    if (!emailInput.value.trim() || !/\S+@\S+\.\S+/.test(emailInput.value)) {
+      showError(emailInput, "Please enter a valid email address.");
+      allValid = false;
     }
-  
-    // Popup close logic
-    popupClose.onclick = () => popup.classList.remove("open");
-    popup.onclick = (e) => { if (e.target === popup) popup.classList.remove("open"); };
-  </script>
+
+    // Validate Theme
+    if (!themeInput.value.trim()) {
+      showError(themeInput, "Please select a theme.");
+      allValid = false;
+    }
+
+    // Validate Image
+    if (!imageInput.files || !imageInput.files[0]) {
+      showUploadError(imageInput, "Please upload an image of your pet.");
+      allValid = false;
+    }
+
+    if (!allValid) {
+      popupMsg.textContent = "Please fill in all required fields.";
+      popup.classList.add("open");
+      return;
+    }
+
+    // All fields valid, disable button and show spinner
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<div class="spinner"></div>';
+
+    // Submit to webhook
+    const formData = new FormData(form);
+    try {
+      const res = await fetch(form.action, { method: "POST", body: formData });
+      const text = await res.text();
+      popupMsg.textContent = text || "Your reading request has been sent!";
+      popup.classList.add("open");
+    } catch {
+      popupMsg.textContent = "Something went wrong. Please try again.";
+      popup.classList.add("open");
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Get a reading";
+    }
+  });
+
+  // Helper for errors below the input
+  function showError(input, message) {
+    let error = document.createElement("div");
+    error.className = "field-error";
+    error.textContent = message;
+    input.classList.add("input-error");
+    input.parentNode.appendChild(error);
+  }
+
+  // Helper for upload error: after the .file box, inside parent field container
+  function showUploadError(input, message) {
+    let error = document.createElement("div");
+    error.className = "field-error";
+    error.textContent = message;
+    input.classList.add("input-error");
+    // Find the label.field wrapping the image input
+    let fieldLabel = input.closest("label.field");
+    let fileBox = input.closest(".file");
+    if (fieldLabel && fileBox) {
+      // Insert error after the file box, but still inside the label.field
+      fieldLabel.insertBefore(error, fileBox.nextSibling);
+    }
+  }
+
+  // Popup close logic
+  popupClose.onclick = () => popup.classList.remove("open");
+  popup.onclick = (e) => { if (e.target === popup) popup.classList.remove("open"); };
+</script>
 </body>
 </html>
