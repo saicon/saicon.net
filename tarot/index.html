@@ -122,81 +122,83 @@
     const popupMsg = document.getElementById("popupMessage");
     const popupClose = document.getElementById("popupClose");
   
-    // Helper to show error below fields
-    function showError(input, message) {
-      let error = input.parentNode.querySelector(".field-error");
-      if (!error) {
-        error = document.createElement("div");
-        error.className = "field-error";
-        input.parentNode.appendChild(error);
-      }
-      error.textContent = message;
-      input.classList.add("input-error");
-    }
-  
-    // Helper to clear error
-    function clearError(input) {
-      let error = input.parentNode.querySelector(".field-error");
-      if (error) error.textContent = "";
-      input.classList.remove("input-error");
-    }
-  
     form.addEventListener("submit", async function(e) {
       e.preventDefault();
       let allValid = true;
-    
-      // Only validate required fields now
+  
+      // Only validate required fields
       const emailInput  = form.elements["email"];
       const themeInput  = form.elements["theme"];
       const imageInput  = form.elements["image0"];
-    
-      // Clear previous errors
+  
+      // Remove all previous errors
       document.querySelectorAll(".field-error").forEach(el => el.remove());
       [emailInput, themeInput, imageInput].forEach(input => input.classList.remove("input-error"));
-    
+  
       // Validate Email
       if (!emailInput.value.trim() || !/\S+@\S+\.\S+/.test(emailInput.value)) {
         showError(emailInput, "Please enter a valid email address.");
         allValid = false;
       }
-    
+  
       // Validate Theme
       if (!themeInput.value.trim()) {
         showError(themeInput, "Please select a theme.");
         allValid = false;
       }
-    
+  
       // Validate Image
       if (!imageInput.files || !imageInput.files[0]) {
-        showErrorOutsideGrid(imageInput, "Please upload an image of your pet."); // custom function for outside grid
+        showFileErrorOutsideGrid(imageInput, "Please upload an image of your pet.");
         allValid = false;
       }
-    
-      if (!allValid) return;
-
-  // ... webhook logic ...
-});
-
-// Helper for field errors below the input
-function showError(input, message) {
-  let error = document.createElement("div");
-  error.className = "field-error";
-  error.textContent = message;
-  input.classList.add("input-error");
-  input.parentNode.appendChild(error);
-}
-
-// Helper for file error outside the grid
-function showErrorOutsideGrid(input, message) {
-  let error = document.createElement("div");
-  error.className = "field-error";
-  error.textContent = message;
-  input.classList.add("input-error");
-  // Find the field label wrapping "Image of your pet"
-  let fieldLabel = input.closest("label.field");
-  fieldLabel.parentNode.insertBefore(error, fieldLabel.nextSibling);
-}
+  
+      if (!allValid) {
+        popupMsg.textContent = "Please fill in all required fields.";
+        popup.classList.add("open");
+        return;
+      }
+  
+      // All fields valid, disable button and show spinner
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<div class="spinner"></div>';
+  
+      // Submit to webhook
+      const formData = new FormData(form);
+      try {
+        const res = await fetch(form.action, { method: "POST", body: formData });
+        const text = await res.text();
+        popupMsg.textContent = text || "Your reading request has been sent!";
+        popup.classList.add("open");
+      } catch {
+        popupMsg.textContent = "Something went wrong. Please try again.";
+        popup.classList.add("open");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Get a reading";
+      }
     });
+  
+    function showError(input, message) {
+      let error = document.createElement("div");
+      error.className = "field-error";
+      error.textContent = message;
+      input.classList.add("input-error");
+      input.parentNode.appendChild(error);
+    }
+  
+    // Show file upload error outside grid
+    function showFileErrorOutsideGrid(input, message) {
+      let error = document.createElement("div");
+      error.className = "field-error";
+      error.textContent = message;
+      input.classList.add("input-error");
+      // Find the field label wrapping "Image of your pet"
+      let fieldLabel = input.closest("label.field");
+      if (fieldLabel) {
+        fieldLabel.parentNode.insertBefore(error, fieldLabel.nextSibling);
+      }
+    }
   
     // Popup close logic
     popupClose.onclick = () => popup.classList.remove("open");
