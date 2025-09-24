@@ -149,7 +149,7 @@
   
       // Validate Image
       if (!imageInput.files || !imageInput.files[0]) {
-        showFileErrorOutsideGrid(imageInput, "Please upload an image of your pet.");
+        showUploadError(imageInput, "Please upload an image of your pet.");
         allValid = false;
       }
   
@@ -179,6 +179,7 @@
       }
     });
   
+    // Helper for errors below the input
     function showError(input, message) {
       let error = document.createElement("div");
       error.className = "field-error";
@@ -187,16 +188,18 @@
       input.parentNode.appendChild(error);
     }
   
-    // Show file upload error outside grid
-    function showFileErrorOutsideGrid(input, message) {
+    // Helper for upload error: after the .file box, inside parent field container
+    function showUploadError(input, message) {
       let error = document.createElement("div");
       error.className = "field-error";
       error.textContent = message;
       input.classList.add("input-error");
-      // Find the field label wrapping "Image of your pet"
+      // Find the label.field wrapping the image input
       let fieldLabel = input.closest("label.field");
-      if (fieldLabel) {
-        fieldLabel.parentNode.insertBefore(error, fieldLabel.nextSibling);
+      let fileBox = input.closest(".file");
+      if (fieldLabel && fileBox) {
+        // Insert error after the file box, but still inside the label.field
+        fieldLabel.insertBefore(error, fileBox.nextSibling);
       }
     }
   
