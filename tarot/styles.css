@@ -199,6 +199,10 @@ select:focus:invalid {
   background: #999;
   cursor: not-allowed;
 }
+.button,
+#submitBtn {
+  font-family: 'alice', sans-serif;
+}
 .spinner {
   border: 3px solid #f3f3f3;
   border-top: 3px solid #fff;
