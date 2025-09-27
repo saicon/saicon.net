@@ -30,6 +30,8 @@ body {
   background-repeat: no-repeat; /* Prevent tiling */
   width: 100vw;
   height: 100vh; /* Or a specific pixel height */
+  background-attachment: fixed;
+  background-position: center center;
 }
 
 /* subtle paper noise */
