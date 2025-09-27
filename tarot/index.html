@@ -168,7 +168,7 @@
     try {
       const res = await fetch(form.action, { method: "POST", body: formData });
       const text = await res.text();
-      popupMsg.textContent = text || "Your reading request has been sent!";
+      popupMsg.textContent = text || "Something went wrong, please try again!";
       popup.classList.add("open");
     } catch {
       popupMsg.textContent = "Something went wrong. Please try again. Note: Your photo cannot be a human :)";
